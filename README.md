@@ -60,10 +60,17 @@
 
 <p>No arquivo src/main/resources/application.properties:</p>
 
-spring.datasource.url=jdbc:postgresql://localhost:5432/forumhub
-spring.datasource.username=seu_usuario
-spring.datasource.password=sua_senha
+spring.application.name=forum_hub
+spring.datasource.url=jdbc:postgresql://localhost/forum_hub
+spring.datasource.username=${USER_NAMESQL}
+spring.datasource.password=${PASSWORD}
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+
+# Spring Datasource
 spring.jpa.hibernate.ddl-auto=update
+
+spring.jpa.show-sql=true
+spring.flyway.enabled=true
 
 # Configurações JWT
 jwt.secret=MinhaChaveSuperSecretaComMaisDe32Caracteres
