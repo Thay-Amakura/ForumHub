@@ -1,4 +1,4 @@
-## FórumHub
+## 💬 FórumHub
 
 <p>API REST de um fórum online para discussão de tópicos, respostas e usuários, com autenticação via JWT e documentação Swagger.</P>
 
@@ -42,7 +42,7 @@
 
 <img align="left" alt="PostgreSQL" tittle="PostgreSQL" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" />
 
-<img align="left" alt="Insomnia" tittle="Insomnia" width="30px" style="padding-right:10px;"src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/insomnia/insomnia-original-wordmark.svg" />
+<img align="left" alt="Insomnia" tittle="Insomnia" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/insomnia/insomnia-original-wordmark.svg" /><br>
 
 ---
 
