@@ -60,21 +60,21 @@
 
 <p>No arquivo src/main/resources/application.properties:</p>
 
-spring.application.name=forum_hub
-spring.datasource.url=jdbc:postgresql://localhost/forum_hub
-spring.datasource.username=${USER_NAMESQL}
-spring.datasource.password=${PASSWORD}
-spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+<p>spring.application.name=forum_hub<br>
+spring.datasource.url=jdbc:postgresql://localhost/forum_hub<br>
+spring.datasource.username=${USER_NAMESQL}<br>
+spring.datasource.password=${PASSWORD}<br>
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect</p>
 
-# Spring Datasource
-spring.jpa.hibernate.ddl-auto=update
+Spring Datasource<br>
+spring.jpa.hibernate.ddl-auto=update<br>
 
-spring.jpa.show-sql=true
-spring.flyway.enabled=true
+spring.jpa.show-sql=true<br>
+spring.flyway.enabled=true<br>
 
-# Configurações JWT
-jwt.secret=MinhaChaveSuperSecretaComMaisDe32Caracteres
-jwt.expiration=86400000
+Configurações JWT<br>
+jwt.secret=MinhaChaveSuperSecretaComMaisDe32Caracteres<br>
+jwt.expiration=86400000<br>
 
 
 ⚠️ Lembre-se de substituir seu_usuario e sua_senha pelos dados do seu PostgreSQL.
@@ -127,21 +127,21 @@ Authorization: Bearer <token>
 
 2. Endpoints principais
 Endpoint	Método	Descrição
-/topicos	GET	Listar todos os tópicos
-/topicos/{id}	GET	Detalhar tópico específico
-/topicos	POST	Criar novo tópico
-/topicos/{id}	PUT	Atualizar tópico existente
-/topicos/{id}	DELETE	Excluir tópico
-/usuario	GET	Listar usuários
-/usuario/{id}	GET	Detalhar usuário
-/usuario	POST	Criar usuário
-/usuario/{id}	PUT	Atualizar usuário
-/usuario/{id}	DELETE	Excluir usuário
-/respostas	GET	Listar respostas
-/respostas/{id}	GET	Detalhar resposta
-/respostas	POST	Criar resposta vinculada a um tópico
-/respostas/{id}	PUT	Atualizar resposta
-/respostas/{id}	DELETE	Excluir resposta
+ - /topicos	GET	Listar todos os tópicos
+ - /topicos/{id}	GET	Detalhar tópico específico
+ - /topicos	POST	Criar novo tópico
+ - /topicos/{id}	PUT	Atualizar tópico existente
+ - /topicos/{id}	DELETE	Excluir tópico
+ - /usuario	GET	Listar usuários
+ - /usuario/{id}	GET	Detalhar usuário
+ - /usuario	POST	Criar usuário
+ - /usuario/{id}	PUT	Atualizar usuário
+ - /usuario/{id}	DELETE	Excluir usuário
+ - /respostas	GET	Listar respostas
+ - /respostas/{id}	GET	Detalhar resposta
+ - /respostas	POST	Criar resposta vinculada a um tópico
+ - /respostas/{id}	PUT	Atualizar resposta
+ - /respostas/{id}	DELETE	Excluir resposta
 
 ---
 
