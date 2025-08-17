@@ -3,6 +3,7 @@ package br.com.thaynna.forumhub.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,17 +18,11 @@ import br.com.thaynna.forumhub.domain.repository.UsuarioRepository;
 import jakarta.transaction.Transactional;
 
 @RestController
-@RequestMapping("/usuarios")
+@RequestMapping("/usuario")
 public class UsuarioController {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
-
-    @PostMapping
-    @Transactional
-    public Usuario criar(@RequestBody Usuario usuario) {
-        return usuarioRepository.save(usuario);
-    }
 
     @GetMapping
     public List<Usuario> listar() {
@@ -35,22 +30,36 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
-    public Usuario buscarPorId(@PathVariable Long id) {
-        return usuarioRepository.findById(id).orElseThrow();
+    public ResponseEntity<Usuario> detalhar(@PathVariable Long id) {
+        return usuarioRepository.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PostMapping
+    public Usuario criar(@RequestBody @Valid Usuario usuario) {
+        return usuarioRepository.save(usuario);
     }
 
     @PutMapping("/{id}")
-    @Transactional
-    public Usuario atualizar(@PathVariable Long id, @RequestBody Usuario usuario) {
-        Usuario existente = usuarioRepository.findById(id).orElseThrow();
-        existente.setNome(usuario.getNome());
-        existente.setEmail(usuario.getEmail());
-        return usuarioRepository.save(existente);
+    public ResponseEntity<Usuario> atualizar(@PathVariable Long id, @RequestBody @Valid Usuario dto) {
+        return usuarioRepository.findById(id)
+                .map(usuario -> {
+                    usuario.setNome(dto.getNome());
+                    usuario.setEmail(dto.getEmail());
+                    usuario.setSenha(dto.getSenha());
+                    return ResponseEntity.ok(usuarioRepository.save(usuario));
+                })
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")
-    @Transactional
-    public void deletar(@PathVariable Long id) {
-        usuarioRepository.deleteById(id);
+    public ResponseEntity<Void> deletar(@PathVariable Long id) {
+        return usuarioRepository.findById(id)
+                .map(usuario -> {
+                    usuarioRepository.delete(usuario);
+                    return ResponseEntity.noContent().<Void>build();
+                })
+                .orElse(ResponseEntity.notFound().build());
     }
 }
